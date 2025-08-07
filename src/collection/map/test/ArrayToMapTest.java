@@ -17,12 +17,23 @@ public class ArrayToMapTest {
 
     // 주어진 배열로부터 Map 생성 - 코드 작성
     HashMap<String, String> hashMap = new HashMap<>();
+    for(String[] product : productArr) {
+      hashMap.put(product[0], product[1]);
+    }
 
-    arrayToMap(productArr, hashMap);
+    for (String key : hashMap.keySet()) {
+      System.out.println("제품: " + key + ", 가격: " + hashMap.get(key));
+    }
 
-    System.out.println("방법1로 했을때의 결과");
+
+    // arrayToMap(productArr, hashMap);
+
+    // System.out.println("방법1로 했을때의 결과");
+
+
 
     // Map의 모든 데이터 출력 - 코드 작성(방법1)
+    /*
     Set<Map.Entry<String, String>> entries = hashMap.entrySet();
     for (Map.Entry<String, String> entry : entries) {
       String key1 = entry.getKey();
@@ -32,6 +43,10 @@ public class ArrayToMapTest {
 
     System.out.println("방법2로 했을때의 결과");
 
+
+    */
+
+    /*
     // 방법 2
     Set<String> keySet = hashMap.keySet();
     for(String key : keySet) {
@@ -47,6 +62,8 @@ public class ArrayToMapTest {
       String key1 = iterator.next();
       System.out.println("제품: " + key1 + ", 가격: " + hashMap.get(key1));
     }
+
+     */
 
   }
 
@@ -130,6 +147,33 @@ public class ArrayToMapTest {
   }
 
  }
+
+package collection.map.test;
+
+public class ArrayToMapTest {
+
+  public static void main(String[] args) {
+
+    String[][] productArr = {{"Java", "10000"}, {"Spring", "20000"}
+      ,{"JPA","30000"} };
+
+    Map<String, Integer> productMap = new HashMap<>();
+
+    for (String[] product : productArr) {
+      productMap.put(product[0], Integer.valueOf(product[1]));
+    }
+
+    // Map의 모든 데이터 출력
+    for (String key : productMap.keySet()) {
+      System.out.println("제품: " + key + ", 가격: " + productMap.get(key));
+    }
+
+  }
+
+}
+
+
+
 
 
 

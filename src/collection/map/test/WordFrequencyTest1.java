@@ -7,7 +7,7 @@ import java.util.Map;
 public class WordFrequencyTest1 {
 
   public static void main(String[] args) {
-
+    /*
     String text = "orange banana apple apple banana apple";
     String[] text_split = text.split(" ");
     Map<String, Integer> text_map = new HashMap<>();
@@ -33,22 +33,28 @@ public class WordFrequencyTest1 {
 
     System.out.println(text_map);
 
+     */
 
-    String text1 = "orange banana apple apple banana apple";
+
+    String text = "orange banana apple apple banana apple";
+
     Map<String, Integer> map = new HashMap<>();
-    String[] words = text1.split(" ");
-    for (String word : words) {
+
+    String[] words = text.split(" ");
+    for(String word : words) {
       Integer count = map.get(word);
       if (count == null) {
         count = 0;
       }
       count++;
-      map.put(word, count); //put 메서드는 key가 같아도 value는 변경 할 수 있음.
+      map.put(word, count);
     }
 
     System.out.println(map);
 
   }
+
+  //put 메서드는 key가 같아도 value는 변경 할 수 있음.
 
 }
 
@@ -117,6 +123,40 @@ public class WordFrequencyTest1 {
 }
 
 
+
+}
+
+package collection.map.test;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class WordFrequencyTest1 {
+
+  public static void main(String[] args) {
+    String text = "orange banana apple apple banana apple";
+
+    Map<String, Integer> map = new HashMap<>();
+
+    String[] words = text.split(" ");
+
+    for (String word : words) {
+      Integer count = map.get(word);
+      if (count == null) {
+        count = 0;
+      }
+      count++;
+
+      map.put(word, count);
+    }
+
+    System.out.println(map);
+  }
+
+}
+
+
+  }
 
 }
 

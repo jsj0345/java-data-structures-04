@@ -24,6 +24,11 @@ public class HashAndEqualsMain1 {
     System.out.println("contains = " + contains);
 
 
+    /*
+    위 코드처럼 equals(), HashCode() 메서드가 없으면
+    id가 같다고 해도 다른 곳으로 데이터가 들어가서 중복을 허용 하게 된다.
+     */
+
   }
 
 }

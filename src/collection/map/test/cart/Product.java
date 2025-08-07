@@ -41,3 +41,11 @@ public class Product {
     return Objects.hash(name, price);
   }
 }
+
+/*
+상품명과 가격이 같은 경우에는 같은 상품으로 취급해야 한다.
+
+따라서, 같은 해시코드 값을 구해야하고 중복을 방지하기 위해 equals() 메서드를 활용해야한다.
+
+
+ */

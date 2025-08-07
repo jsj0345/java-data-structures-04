@@ -23,7 +23,8 @@ public class MemberRepository {
 
   public Member findByName(String name) {
     // 코드 작성
-    Set<String> keySet = memberMap.keySet();
+    // Set<String> keySet = memberMap.keySet();
+    /*
     Collection<Member> values = memberMap.values();
     Iterator<Member> iterator = values.iterator();
 
@@ -33,8 +34,13 @@ public class MemberRepository {
         return member;
       }
     }
-
-    return null;
+     */
+     for (Member member : memberMap.values()) {
+       if(member.getName().equals(name)) {
+         return member;
+       }
+     }
+     return null;
   }
 
 }

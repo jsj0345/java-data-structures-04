@@ -26,4 +26,8 @@ public class HashAndEqualsMain3 {
 
   }
 
+  /*
+  HashCode()와 equals() 메서드가 둘다 있으면 중복을 허용하지 않고 데이터를 넣는다.
+   */
+
 }
