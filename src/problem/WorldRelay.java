@@ -25,33 +25,23 @@ class WorldRelay {
   public int[] solution(int n, String[] words) {
     int[] answer = {};
 
-    List<String> wordRelayList = new ArrayList<>();
+    List<String> wordRelayList = new ArrayList<>(); // 끝말 잇기는 순서가 중요하므로 어레이리스트를 활용.
     Map<String, Integer> wordMap = new HashMap<>(); // 단어들 모음
 
 
     for(int i = 0; i < words.length; i++) {
       wordRelayList.add(i, words[i]);
 
-      wordMap.put(words[i], wordMap.getOrDefault(words[i], 0));
+      wordMap.put(words[i], wordMap.getOrDefault(words[i], 0) + 1);
       // 반복되는 단어가 있으면 나오는 횟수를 계산하기 위해 getOrDefault를 쓴다.
+      // 11/28 수정 -> getOrDefault 메서드를 쓰는건 좋은데 기존 값에다가 더해야하는데 안더했음.
 
     }
 
-    Set<String> keySet = wordMap.keySet();
-
-    // 2번 이상 나온 단어를 추출하기
-
-    String duplicationWord = null;
-
-    for(String word : keySet) {
-      if(wordMap.get(word) >= 2) {
-        duplicationWord = word;
-      }
-    }
+    // System.out.println(wordMap);
 
     int oridinalNumber = 0; // 몇 번째 인지를 나타내는 변수
     int tryCount = 0;  // 시도를 몇 번 했는지를 나타내는 변수
-
 
     // subString(문자열 길이 -1); 을 이용하여 마지막 문자만 빼내자.
     for(int i = 0; i < wordRelayList.size(); i++) {
@@ -69,14 +59,29 @@ class WorldRelay {
           근데 단어가 나온 횟수 변화가 한번이라도 있으면 바로 중복 처리해야함.
           이 부분을 고려해보도록 하자.
           */
-          if(wordRelayList.get(i).equals(duplicationWord) && wordMap.get(wordRelayList.get(i)) >= 2) {
-            wordMap.put(wordRelayList.get(i), wordMap.get(wordRelayList.get(i)) - 1);
-          } else if ((wordRelayList.get(i).equals(duplicationWord)) && (wordMap.get(wordRelayList.get(i)) == 1)) {
-            oridinalNumber = ((i + 1) % n) + 1;
-            tryCount = ((i + 1) / n) + 1;
-            answer = new int[]{oridinalNumber, tryCount};
 
-            return answer;
+          if(wordMap.get(wordRelayList.get(i + 1)) >= 2) {
+
+            /*
+            마지막에 중복 되는 단어가 발생하면 답이없음.
+
+            그래서 i + 1번째로 비교해야 한다.
+
+            어차피 조건에 현재번째와 그 다음 번째를 비교하니까 그 다음 번째를 기준으로 생각하면 된다.
+            */
+
+            int index = wordRelayList.indexOf(wordRelayList.get(i + 1)); // 중복되는 키워드가 최초로 있는 지점을 파악.
+
+            if((i + 1) != index) {
+              oridinalNumber = ((i + 1) % n) + 1;
+              tryCount = ((i + 1) / n) + 1;
+
+              answer = new int[]{oridinalNumber, tryCount};
+
+              return answer;
+
+            }
+
           }
 
           continue;
